@@ -1,0 +1,12 @@
+{
+  "name": "web-advanced-project",
+  "private": true,
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "test": "npm run test --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

@@ -1,0 +1,7 @@
+server/node_modules
+client/node_modules
+*.sqlite
+*.env
+!server/.env.example
+
+.idea

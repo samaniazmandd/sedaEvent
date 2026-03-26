@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+:root {
+  /*  Variables can go here */
+  --gray-color:  #a9a9a9; 
+}
