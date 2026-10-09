@@ -3,6 +3,7 @@ import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpec } from "./swagger-config.js";
 
+
 import eventRouter from "./routes/event.js";
 import authenticateRouter from "./routes/authenticate.js";
 import reservationRouter from "./routes/reservation.js";
@@ -13,6 +14,7 @@ import "./db/Event.js";
 import "./db/User.js";
 import "./db/Reservation.js";
 import "./db/relations.js";
+import {seedEvents} from "./db/Event.js"
 
 import { initializeAdmin, initializeUser } from "./db/initializeUsers.js";
 
@@ -27,6 +29,7 @@ try {
   console.log("Connected to db");
   await sequelize.sync({ alter: true });
   console.log("Synced ");
+  await seedEvents();
 
   // //here I initialize admin so they can easilyy login
   await initializeAdmin(process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD);
@@ -40,7 +43,7 @@ try {
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:4173"],
+    origin: ["http://localhost:5173", "http://localhost:5174","http://localhost:4173"],
     credentials: false,
   })
 ); // TODO make sure it blocks everything except localhost port 4173 and 5173 (default Svelte ports)
